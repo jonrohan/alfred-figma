@@ -1,0 +1,16 @@
+{
+  "name": "alfred-figma",
+  "version": "1.0.0",
+  "description": "Alfred workflow to quick link figma projects and files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alfred",
+    "figma",
+    "workflow"
+  ],
+  "author": "Jon Rohan",
+  "license": "MIT"
+}
