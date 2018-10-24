@@ -22,6 +22,7 @@ if(isAddingTeam) {
 
 Promise.all(teams.map(team => {
   return Promise.resolve(items.push({
+      uid: `${team.name}.${team.id}`,
       title: team.name,
       subtitle: `Open team page.`,
       arg:  utils.getUrl(`/files/team/${team.id}/${team.name}`, 'app'),
@@ -32,6 +33,14 @@ Promise.all(teams.map(team => {
         action: 'browser'
       },
       mods: {
+        alt: {
+          subtitle: `Remove ${team.name} projects and files from search results.`,
+          arg: JSON.stringify({id: team.id, name: team.name}),
+          variables: {
+            action: 'remove',
+            notification: `${team.name} team’s projects and files removed from search results.`
+          }
+        },
         cmd: {
           subtitle: 'Open team page in a web browser',
           arg: utils.getUrl(`/files/team/${team.id}/${team.name}`, 'browser')

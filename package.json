@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "description": "Alfred workflow to quick link figma projects and files",
   "main": "index.js",
+	"author": {
+		"name": "Jon Rohan",
+		"email": "yes@jonrohan.codes",
+		"url": "http://jonrohan.codes/"
+	},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"postinstall": "alfy-init",
+		"preuninstall": "alfy-cleanup"
+	},
   "keywords": [
     "alfred",
     "alfred-workflow",
@@ -16,7 +23,6 @@
     "design",
     "design-tools"
   ],
-  "author": "Jon Rohan",
   "license": "MIT",
   "dependencies": {
     "alfy": "^0.7.0",

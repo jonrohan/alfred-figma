@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>30DDD57A-AB17-4D76-9D5F-8DDD552068EC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E4EE7408-FC47-424A-A060-A123CEB1BAE7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>38C12657-DD17-4D38-8AD7-4E7993119C2F</key>
 		<array>
 			<dict>
@@ -39,6 +52,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>F4AA1900-0A87-4583-AA71-2DFF97597529</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>8DDFAAAD-F40E-43EA-A038-9B69465D69D9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>30DDD57A-AB17-4D76-9D5F-8DDD552068EC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -84,6 +110,16 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>8DDFAAAD-F40E-43EA-A038-9B69465D69D9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>1396E927-07B9-41B1-A9E0-DFF928DD3039</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -94,10 +130,6 @@
 			</dict>
 		</array>
 	</dict>
-	<key>createdby</key>
-	<string>Jon Rohan</string>
-	<key>description</key>
-	<string>Alfred workflow to quick link figma projects and files</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -139,6 +171,48 @@
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>38C12657-DD17-4D38-8AD7-4E7993119C2F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node lib/addTeam.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F4AA1900-0A87-4583-AA71-2DFF97597529</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:action}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>add</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>51B415F1-E8A5-4329-8FF4-99D61EC93D82</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -216,9 +290,9 @@
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>102</integer>
+				<integer>0</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node lib/addTeam.js "$1"</string>
+				<string>./node_modules/.bin/run-node lib/removeTeam.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -229,7 +303,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>F4AA1900-0A87-4583-AA71-2DFF97597529</string>
+			<string>30DDD57A-AB17-4D76-9D5F-8DDD552068EC</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -243,12 +317,12 @@
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>add</string>
+				<string>remove</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
-			<string>51B415F1-E8A5-4329-8FF4-99D61EC93D82</string>
+			<string>8DDFAAAD-F40E-43EA-A038-9B69465D69D9</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -296,7 +370,64 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string># Figma Alfred 3 workflow
+
+&gt; Alfred workflow to quick link Figma teams, projects and files
+
+## TODO:
+
+- Figma's API doesn't allow access to draft files.
+- Figma's API doesn't allow access to get teams. This requires adding team ids to the workflow manually.
+- Files open in the desktop app, but teams and projects won't.
+
+## Installation
+
+```
+$ npm install --global alfred-figma
+```
+
+*Requires [Node.js](https://nodejs.org) 10+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
+
+## Configuration
+
+There are a couple of requirements.
+
+1. You need a [Figma account](https://www.figma.com) and be part of a team.
+2. Create a [Personal Access Token](https://www.figma.com/developers/docs#auth-dev-token) so you can reach the API.
+3. Create a `.env` file with your access token in the directory of the installed workflow.
+   - `FIGMA_TOKEN=&lt;personal-access-token&gt;`
+   - Alternatively add an environment variable for `FIGMA_TOKEN`
+4. Add a team to your results with the `figma add [teamurl]` command.
+
+## Usage
+
+The workflow lists results of 3 items teams, projects and files.
+
+### Teams
+
+- &lt;kbd&gt;⏎&lt;/kbd&gt; Open team page.
+- &lt;kbd&gt;⌥&lt;/kbd&gt; + &lt;kbd&gt;⏎&lt;/kbd&gt; Remove team from workflow.
+- &lt;kbd&gt;⌘&lt;/kbd&gt; + &lt;kbd&gt;⏎&lt;/kbd&gt; Open team page in web browser.
+
+### Projects
+
+- &lt;kbd&gt;⏎&lt;/kbd&gt; Open project page.
+- &lt;kbd&gt;⌘&lt;/kbd&gt; + &lt;kbd&gt;⏎&lt;/kbd&gt; Open project page in web browser.
+
+### Files
+
+- &lt;kbd&gt;⏎&lt;/kbd&gt; Open file.
+- &lt;kbd&gt;⌥&lt;/kbd&gt; + &lt;kbd&gt;⏎&lt;/kbd&gt; Duplicate file to your drafts.
+- &lt;kbd&gt;⌘&lt;/kbd&gt; + &lt;kbd&gt;⏎&lt;/kbd&gt; Open file in web browser.
+
+## Credits
+
+- [alfy](https://github.com/sindresorhus/alfy) made by [Sindre Sorhus](https://sindresorhus.com/) is licensed by [MIT](https://github.com/sindresorhus/alfy/blob/master/license)
+
+
+## License
+
+MIT © [Jon Rohan](http://jonrohan.codes/)</string>
 	<key>uidata</key>
 	<dict>
 		<key>1396E927-07B9-41B1-A9E0-DFF928DD3039</key>
@@ -304,7 +435,14 @@
 			<key>xpos</key>
 			<integer>330</integer>
 			<key>ypos</key>
-			<integer>500</integer>
+			<integer>540</integer>
+		</dict>
+		<key>30DDD57A-AB17-4D76-9D5F-8DDD552068EC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>470</integer>
+			<key>ypos</key>
+			<integer>370</integer>
 		</dict>
 		<key>38C12657-DD17-4D38-8AD7-4E7993119C2F</key>
 		<dict>
@@ -318,14 +456,14 @@
 			<key>xpos</key>
 			<integer>470</integer>
 			<key>ypos</key>
-			<integer>470</integer>
+			<integer>510</integer>
 		</dict>
 		<key>51B415F1-E8A5-4329-8FF4-99D61EC93D82</key>
 		<dict>
 			<key>xpos</key>
 			<integer>330</integer>
 			<key>ypos</key>
-			<integer>320</integer>
+			<integer>270</integer>
 		</dict>
 		<key>886452CD-F9E4-4FCA-A3CF-3C9ECCB94897</key>
 		<dict>
@@ -333,6 +471,13 @@
 			<integer>470</integer>
 			<key>ypos</key>
 			<integer>110</integer>
+		</dict>
+		<key>8DDFAAAD-F40E-43EA-A038-9B69465D69D9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>330</integer>
+			<key>ypos</key>
+			<integer>400</integer>
 		</dict>
 		<key>E4EE7408-FC47-424A-A060-A123CEB1BAE7</key>
 		<dict>
@@ -346,7 +491,7 @@
 			<key>xpos</key>
 			<integer>470</integer>
 			<key>ypos</key>
-			<integer>290</integer>
+			<integer>240</integer>
 		</dict>
 		<key>FE33F9F5-C3B4-4CBE-BEEF-D22AC09E1862</key>
 		<dict>
@@ -356,7 +501,5 @@
 			<integer>290</integer>
 		</dict>
 	</dict>
-	<key>webaddress</key>
-	<string>http://jonrohan.codes/</string>
 </dict>
 </plist>
