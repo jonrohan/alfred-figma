@@ -1,18 +1,18 @@
 {
   "name": "alfred-figma",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Alfred workflow to quick link figma projects and files",
   "main": "index.js",
-	"author": {
-		"name": "Jon Rohan",
-		"email": "yes@jonrohan.codes",
-		"url": "http://jonrohan.codes/"
-	},
+  "author": {
+    "name": "Jon Rohan",
+    "email": "yes@jonrohan.codes",
+    "url": "http://jonrohan.codes/"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"postinstall": "alfy-init",
-		"preuninstall": "alfy-cleanup"
-	},
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup"
+  },
   "keywords": [
     "alfred",
     "alfred-workflow",
