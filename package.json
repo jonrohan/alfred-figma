@@ -1,6 +1,6 @@
 {
   "name": "alfred-figma",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Alfred workflow to quick link figma projects and files",
   "main": "index.js",
   "scripts": {
