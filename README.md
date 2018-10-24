@@ -29,6 +29,9 @@ There are a couple of requirements.
 
 ## Usage
 
+![alfred-figma](https://user-images.githubusercontent.com/54012/47411429-88909400-d71d-11e8-93a4-43a06e5bdd8e.gif)
+
+
 The workflow lists results of 3 items teams, projects and files.
 
 ### Teams
