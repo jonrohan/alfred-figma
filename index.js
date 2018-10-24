@@ -23,8 +23,20 @@ if(isAddingTeam) {
 Promise.all(teams.map(team => {
   return Promise.resolve(items.push({
       title: team.name,
-      subtitle: `Open figma team.`,
-      arg: ''
+      subtitle: `Open team page.`,
+      arg:  utils.getUrl(`/files/team/${team.id}/${team.name}`, 'app'),
+      text: {
+        copy: utils.getUrl(`/files/team/${team.id}/${team.name}`, 'browser'),
+      },
+      variables: {
+        action: 'browser'
+      },
+      mods: {
+        cmd: {
+          subtitle: 'Open team page in a web browser',
+          arg: utils.getUrl(`/files/team/${team.id}/${team.name}`, 'browser')
+        }
+      }
     }))
     .then(() => utils.getResults(`/teams/${team.id}/projects`))
     .then(results => {
@@ -32,18 +44,31 @@ Promise.all(teams.map(team => {
         return Promise.resolve(items.push({
           uid: `${p.id}/${p.name}`,
           title: p.name,
-          subtitle: 'GitHub project',
+          subtitle: `Open project page for team ${team.name}.`,
+          arg:  utils.getUrl(`/files/project/${p.id}/${p.name}`, 'app'),
           text: {
-            copy: utils.getUrl(`/projects/${p.id}/${p.name}`, 'browser'),
+            copy: utils.getUrl(`/files/project/${p.id}/${p.name}`, 'browser'),
+          },
+          variables: {
+            action: 'browser'
+          },
+          mods: {
+            cmd: {
+              subtitle: 'Open project in web browser',
+              arg: utils.getUrl(`/files/project/${p.key}/${p.name}`, 'browser')
+            }
           }
         }))
         .then(() => utils.getResults(`/projects/${p.id}/files`))
         .then(results => {
           return Promise.all(results.files.map((f) => {
+            // set the project name for formatting
+            f.project = p.name
+            f.team = team.name
             return Promise.resolve(items.push({
               uid: f.key,
               title: f.name,
-              subtitle: utils.subtitle(f, ['modified']),
+              subtitle: utils.subtitle(f, ['team', 'project', 'modified']),
               arg:  utils.getUrl(`/file/${f.key}/${f.name}`, 'app'),
               variables: {
                 action: 'browser'
@@ -53,9 +78,13 @@ Promise.all(teams.map(team => {
                 copy: utils.getUrl(`/file/${f.key}/${f.name}`, 'browser'),
               },
               mods: {
+                alt: {
+                  subtitle: 'Duplicate file to your drafts.',
+                  arg: utils.getUrl(`/file/${f.key}/${f.name}/duplicate`, 'browser')
+                },
                 cmd: {
                   subtitle: 'Open file in web browser',
-                  arg: utils.getUrl(`/file/${f.key}/${f.name}`, 'browser'),
+                  arg: utils.getUrl(`/file/${f.key}/${f.name}`, 'browser')
                 }
               }
             }))
@@ -80,9 +109,6 @@ Promise.all(teams.map(team => {
 })
 .then(() => items.filter(item => {
   if (item.title.toLowerCase().includes(alfy.input.toLowerCase())) {
-    return true
-  }
-  if (item.subtitle.toLowerCase().includes(alfy.input.toLowerCase())) {
     return true
   }
   return false

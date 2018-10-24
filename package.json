@@ -8,8 +8,13 @@
   },
   "keywords": [
     "alfred",
+    "alfred-workflow",
+    "alfred3-workflow",
+    "alfred3",
     "figma",
-    "workflow"
+    "figma-api",
+    "design",
+    "design-tools"
   ],
   "author": "Jon Rohan",
   "license": "MIT",
