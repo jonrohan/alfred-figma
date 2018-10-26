@@ -115,6 +115,45 @@ Promise.all(teams.map(team => {
       }
     })
   }
+  items.push({
+    title: 'Recent Files',
+    arg: utils.getUrl('/files/recent', 'app'),
+    mods: {
+      cmd: {
+        subtitle: 'Open recent files in web browser',
+        arg: utils.getUrl('/files/recent', 'browser')
+      }
+    },
+    variables: {
+      action: 'browser'
+    }
+  })
+  items.push({
+    title: 'Drafts',
+    arg: utils.getUrl(`/files/drafts`, 'app'),
+    mods: {
+      cmd: {
+        subtitle: 'Open drafts in web browser',
+        arg: utils.getUrl('/files/drafts', 'browser')
+      }
+    },
+    variables: {
+      action: 'browser'
+    }
+  })
+  items.push({
+    title: 'Deleted Files',
+    arg: utils.getUrl(`/files/deleted`, 'app'),
+    mods: {
+      cmd: {
+        subtitle: 'Open deleted files in web browser',
+        arg: utils.getUrl('/files/deleted', 'browser')
+      }
+    },
+    variables: {
+      action: 'browser'
+    }
+  })
 })
 .then(() => items.filter(item => {
   if (item.title.toLowerCase().includes(alfy.input.toLowerCase())) {
