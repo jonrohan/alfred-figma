@@ -4,7 +4,7 @@
 
 ## TODO:
 
-- Figma's API doesn't allow access to draft files.
+- Figma's API doesn't allow access to getting listings of draft files.
 - Figma's API doesn't allow access to get teams. This requires adding team ids to the workflow manually.
 - Files open in the desktop app, but teams and projects won't.
 
@@ -48,6 +48,7 @@ The workflow lists results of 3 items teams, projects and files.
 ### Files
 
 - <kbd>⏎</kbd> Open file.
+- <kbd>⌘</kbd> + <kbd>Y</kbd> OR <kbd>shift</kbd> Quicklook preview of the file.
 - <kbd>⌥</kbd> + <kbd>⏎</kbd> Duplicate file to your drafts.
 - <kbd>⌘</kbd> + <kbd>⏎</kbd> Open file in web browser.
 
